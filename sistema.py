@@ -1,24 +1,26 @@
+#Template do usuário
 menu = """
 
-[d] Depositar
-[s] Sacar
+[d] Depósito
+[s] Saque
 [e] Extrato
-[q] Sair
+[x] Sair
 
 => """
 
-saldo = 0
-limite = 500
+#Informando diretrizes base
+saldo = 100
+limite = 1500
 extrato = ""
 numero_saques = 0
-LIMITE_SAQUES = 3
+LIMITE_SAQUES = 5
 
 while True:
 
     opcao = input(menu)
 
     if opcao == "d":
-        valor = float(input("Informe o valor do depósito: "))
+        valor = float(input("Digite o valor do depósito: "))
 
         if valor > 0:
             saldo += valor
@@ -28,7 +30,7 @@ while True:
             print("Operação falhou! O valor informado é inválido.")
 
     elif opcao == "s":
-        valor = float(input("Informe o valor do saque: "))
+        valor = float(input("Digite o valor do saque: "))
 
         excedeu_saldo = valor > saldo
 
@@ -54,12 +56,13 @@ while True:
             print("Operação falhou! O valor informado é inválido.")
 
     elif opcao == "e":
-        print("\n================ EXTRATO ================")
+        print("\n******************* EXTRATO *******************")
         print("Não foram realizadas movimentações." if not extrato else extrato)
         print(f"\nSaldo: R$ {saldo:.2f}")
-        print("==========================================")
+        print("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*")
 
-    elif opcao == "q":
+    elif opcao == "X":
+        print("Sistema encerrado. Até a próxima")
         break
 
     else:
